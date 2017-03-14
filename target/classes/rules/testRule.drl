@@ -1,0 +1,21 @@
+package rules
+
+import pojo.Product
+
+rule "Flight Discount"
+	when
+		productObject : Product(name == "Flight")
+	then
+		System.out.println("Entered flight");
+		productObject.setDiscount(5);
+		productObject.setName("Hotel");
+		update(productObject);
+	end
+
+rule "Hotel Discount"
+	when
+		productObject : Product(name == "Hotel")
+	then
+		System.out.println("Entered hotel");
+		productObject.setDiscount(10);
+	end
